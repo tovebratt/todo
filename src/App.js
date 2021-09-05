@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import './index.css';
+import { format, compareAsc } from 'date-fns';
 
 import Header from './components/Header';
 import Items from './components/Items';
@@ -12,6 +13,7 @@ const App = () => {
   const [popupAddItem, setpopupAddItem] = useState(false);
 
   const [items, setitems] = useState([])
+  const [createDate, setCreateDate] = useState('');
 
   useEffect(() => {
     const getItems = async () => {
@@ -66,9 +68,10 @@ const App = () => {
 
   const onClickDay = (e) => {
     console.log(e);
-    console.log('test');
+ 
     setpopupAddItem(true);
-    // <AddItem date={date}/>
+  
+    <AddItem date={date}/>
   }
   
 
@@ -91,12 +94,15 @@ const App = () => {
   //Add item
   const addItem = async (item) => {
     console.log(item);
-    const res = await fetch('http://localhost:5000/lists/items', {
+    console.log(date);
+    const newItem = {item, createDate: format(date, "yyyy-MM-dd")};
+    console.log(newItem);
+    const res = await fetch('http://localhost:5000/lists/additem', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify(item)
+      body: JSON.stringify(newItem)
     })
 
     const data = res.json();
@@ -115,7 +121,7 @@ const App = () => {
   return (
     <>
       <Header />
-      {popupAddItem && <AddItem date={date} onAdd={addItem} onPopup={setpopupAddItem} onCloseClick={() => setpopupAddItem(!popupAddItem)}/>}
+      {popupAddItem && <AddItem onDate={onClickDay} onAdd={addItem} onPopup={setpopupAddItem} onCloseClick={() => setpopupAddItem(!popupAddItem)}/>}
     <div className='container'>
       <Calendar 
         onChange={onChange}

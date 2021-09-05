@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
-const AddItem = ({ date, onAdd, onPopup, onCloseClick }) => {
+const AddItem = ({ onDate, onAdd, onCloseClick }) => {
   const [item, setitem] = useState('');
   const [createDate, setCreateDate] = useState('');
   const [checked, setChecked] = useState(false);
@@ -14,6 +14,7 @@ const AddItem = ({ date, onAdd, onPopup, onCloseClick }) => {
     }
 
     onAdd({item});
+    onDate({createDate})
 
     setitem('');
   }
