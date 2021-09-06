@@ -77,10 +77,9 @@ const App = () => {
 
   // delete item
   const deleteItem = async (itemId) => {
-    await fetch(`http://localhost:5000/lists/items/${itemId}`, {
+    await fetch('http://localhost:5000/lists/deleteitem/'+ itemId, {
       method: 'DELETE',
     })
-    // console.log('delete', itemId);
 
     setitems(items.filter((item) => item.itemId !== itemId))
   }
@@ -105,7 +104,7 @@ const App = () => {
       body: JSON.stringify(newItem)
     })
 
-    const data = res.json();
+    const data = await res.json();
     setitems([...items, data])
   }
 
@@ -114,7 +113,8 @@ const App = () => {
     console.log(date);
     console.log(items);
     return items.filter((item) => item.createDate === date).length;
-    
+    // return items.filter((item) => format(item.createDate, "yyyy-MM-dd") === format(date, "yyyy-MM-dd")).length;
+
 
   }
 
