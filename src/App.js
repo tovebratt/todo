@@ -35,6 +35,12 @@ const App = () => {
     return data
   }
 
+    //fetch item
+    const fetchItem = async (itemId) => {
+      const res = await fetch(`http://localhost:5000/lists/items/${itemId}`)
+      const data = await res.json()
+      return data
+    }
 
 
 //   const [items, setitems] = useState([
@@ -85,10 +91,29 @@ const App = () => {
   }
 
   //check item
-  const checkItem = (itemId) => {
+  const checkItem = async (itemId) => {
     // console.log(itemId)
-    setitems(items.map((item) => item.itemId === itemId ? { ...item, done: !item.done } : item))
+    const itemToCheck = await fetchItem(itemId);
+    const updateItem = { ...itemToCheck, done: !itemToCheck.done }
+
+    const res = await fetch(`http://localhost:5000/lists/items/${itemId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(updateItem)
+    })
+
+    const data = await res.json();
+
+    setitems(items.map((item) => item.itemId === itemId ? { ...item, done: data.done } : item))
   }
+
+    // //check item
+    // const checkItem = (itemId) => {
+    //   // console.log(itemId)
+    //   setitems(items.map((item) => item.itemId === itemId ? { ...item, done: !item.done } : item))
+    // }
 
   //Add item
   const addItem = async (item) => {
