@@ -12,15 +12,17 @@ const Item = ({ item, onDelete, onCheck }) => {
   // let a = moment(formattedDate);
   // console.log(a);
 
-  console.log(item.createDate);
+  // console.log(item.createDate);
+  // format({item.createDate}, "yyyy-MM-dd")
 
   return (
     <>
     <div className='item'>
-      <input type='checkbox' className='checkbox-round' onClick={() => onCheck(item.itemId)}/>
-      <h4>{item.item} </h4> 
-      <br /><p>{item.createDate}</p><FaTimes onClick={() => onDelete(item.itemId)}/>
+      <input type='checkbox' className='checkbox-round' checked={item.done} onChange={() => onCheck(item)}/>
+      <div className='item-h5'><h5>{item.item} </h5> </div>
+      <FaTimes onClick={() => onDelete(item)}/>
     </div>
+    <div className='item-p'><p>{item.createDate}</p></div>
     </>
   )
 }
