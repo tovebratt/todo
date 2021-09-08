@@ -1,19 +1,13 @@
 import { FaTimes } from 'react-icons/fa';
 // import { format, compareAsc } from 'date-fns';
-import { format, moment } from 'moment';
+import moment, { format } from 'moment';
+
 
 const Item = ({ item, onDelete, onCheck }) => {
 
-  // const formattedDate = format(item.createDate, "yyyy-MM-dd");
-  // const formattedDate = moment(item.createDate).format('MMMM Do YYYY, h:mm:ss a');
-  // console.log(formattedDate);
-  // let formattedDate = item.createDate;
-
-  // let a = moment(formattedDate);
-  // console.log(a);
-
-  // console.log(item.createDate);
-  // format({item.createDate}, "yyyy-MM-dd")
+  function readableDate(utcDateString) {
+    return moment(utcDateString).format('YYYY-MM-DD');
+  }
 
   return (
     <>
@@ -22,7 +16,7 @@ const Item = ({ item, onDelete, onCheck }) => {
       <div className='item-h5'><h5>{item.item} </h5> </div>
       <FaTimes onClick={() => onDelete(item)}/>
     </div>
-    <div className='item-p'><p>{item.createDate}</p></div>
+    <div className='item-p'><p>{readableDate(item.createDate)}</p></div>
     </>
   )
 }
