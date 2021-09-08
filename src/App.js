@@ -163,6 +163,8 @@ const App = () => {
           onPopup={setpopupAddItem}
           date={date}
           clickedDate={clickedDate}
+          onDelete={deleteItem} 
+          onCheck={checkItem}
           onCloseClick={() => setpopupAddItem(!popupAddItem)}
         />
       )}
