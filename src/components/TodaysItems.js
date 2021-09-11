@@ -1,5 +1,3 @@
-// const TodaysItems = () => {
-import { useState } from "react";
 import Item from "./Item";
 // import Items from './components/Items';
 
@@ -11,18 +9,12 @@ const TodaysItems = ({
   clickedDate,
   date,
 }) => {
-  const [item, setitem] = useState("");
-
-  // console.log(clickedDate);
+  // const [item, setitem] = useState("");
   const formattedClickedDate = clickedDate.toISOString();
-  console.log(clickedDate);
-  console.log(formattedClickedDate);
-  console.log(items);
 
-  const countTodaysItems = items.filter(
-    (item) => item.createDate === formattedClickedDate
-  ).length;
-  console.log(countTodaysItems);
+  // const countTodaysItems = items.filter(
+  //   (item) => item.createDate === formattedClickedDate
+  // ).length;
 
 //   if (countTodaysItems == 0) {
 //     return (

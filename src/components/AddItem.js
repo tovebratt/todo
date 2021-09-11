@@ -14,10 +14,6 @@ const AddItem = ({
 }) => {
   const [item, setitem] = useState("");
   const [createDate, setCreateDate] = useState("");
-  // const [checked, setChecked] = useState(false);
-
-  // onClickedDate();
-  console.log(clickedDate);
 
   const onSubmit = (e) => {
     e.preventDefault();

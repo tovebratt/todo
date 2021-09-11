@@ -24,7 +24,7 @@ const App = () => {
 
   //fetch data
   const fetchItems = async () => {
-    const res = await fetch("http://localhost:5000/lists/items");
+    const res = await fetch("https://tove-bratt-todo.herokuapp.com/lists/items");
     const data = await res.json();
     return data;
   };
@@ -36,6 +36,7 @@ const App = () => {
   //   return data
   // }
 
+  // show pop up on click
   const onClickDay = (e) => {
     const clickedDate = e;
 
@@ -49,7 +50,7 @@ const App = () => {
     const itemId = item.itemId;
     setItems(items.filter((i) => i.itemId !== itemId));
 
-    fetch("http://localhost:5000/lists/deleteitem/" + itemId, {
+    fetch("https://tove-bratt-todo.herokuapp.com/lists/deleteitem/" + itemId, {
       method: "DELETE",
     });
   };
@@ -65,7 +66,7 @@ const App = () => {
 
     setItems(updatedItems);
 
-    fetch(`http://localhost:5000/lists/items/${itemId}`, {
+    fetch(`https://tove-bratt-todo.herokuapp.com/lists/items/${itemId}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
@@ -74,17 +75,16 @@ const App = () => {
     });
   };
 
-  //Add item
+  //add item
   const addItem = (item) => {
-    // const ISOdate = date.toISOString();
     moment(date).format("YYYY-MM-DD HH:MM:SS");
 
     const newItem = {
       item: item.item,
       createDate: moment(date).utc(true).format("YYYY-MM-DD HH:mm:ss"),
     };
-   
-    fetch("http://localhost:5000/lists/additem", {
+
+    fetch("https://tove-bratt-todo.herokuapp.com/lists/additem", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -92,8 +92,6 @@ const App = () => {
       body: JSON.stringify(newItem),
     });
 
-    // const data = await res.json();
-    // setItems([...items, data]);
     setItems([...items, newItem]);
   };
 
