@@ -19,33 +19,56 @@ const TodaysItems = ({
   console.log(formattedClickedDate);
   console.log(items);
 
-  return (
-    <>
-      <h3>Dagens todo's</h3>
+  const countTodaysItems = items.filter(
+    (item) => item.createDate === formattedClickedDate
+  ).length;
+  console.log(countTodaysItems);
 
+//   if (countTodaysItems == 0) {
+//     return (
+//       <>
+//         <h3>Dagens todo's</h3>
+//         <p>Det finns inga aktiviteter idag.</p>
+//       </>
+//     );
+//   } else {
+//     return (
+//       <>
+//     <h3>Dagens todo's</h3>;
+//     {items
+//         .filter((item) => item.createDate === formattedClickedDate)
+//         .map((item, itemId, date) => {
+          
+//             <Item
+//               key={itemId}
+//               item={item}
+//               onDelete={onDelete}
+//               onCheck={onCheck}
+//               date={date}
+//             />
+//         });}
+//   </>
+//   );
+// }
+
+  return (
+    <div className='todaysItems'>
       {items
         .filter((item) => item.createDate === formattedClickedDate)
         .map((item, itemId, date) => {
-          return (
-            <Item
-              key={itemId}
-              item={item}
-              onDelete={onDelete}
-              onCheck={onCheck}
-              date={date}
-            />
-          );
+
+            return (
+              <Item
+                key={itemId}
+                item={item}
+                onDelete={onDelete}
+                onCheck={onCheck}
+                date={date}
+              />
+            );
         })}
-    </>
+    </div>
   );
 };
 
 export default TodaysItems;
-
-// tasks.map((task) =>
-// task.id === id ? { ...task, reminder: data.reminder } : task
-// )
-
-// const updatedItems = items.map((i) => {
-//   console.log(i.itemId, itemId);
-//   return i.itemId === itemId ? updateItem : i});

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import TodaysItems from "./TodaysItems";
-import Item from "./Item";
 
 const AddItem = ({
   onDate,
@@ -46,7 +45,6 @@ const AddItem = ({
           date={date}
           clickedDate={clickedDate}
         />
-        {/* <Item key={item.itemId} item={item} onDelete={onDelete} onCheck={onCheck} /> */}
         <FaTimes className="close-btn" onClick={onCloseClick} />
         <form className="add-item" onSubmit={onSubmit}>
           <h4>

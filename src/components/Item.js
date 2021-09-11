@@ -1,5 +1,4 @@
 import { FaTimes } from 'react-icons/fa';
-// import { format, compareAsc } from 'date-fns';
 import moment, { format } from 'moment';
 
 
@@ -12,7 +11,7 @@ const Item = ({ item, onDelete, onCheck }) => {
   return (
     <>
     <div className='item'>
-      <input type='checkbox' className='checkbox-round' checked={item.done} onChange={() => onCheck(item)}/>
+      <input type='checkbox' className='round' checked={item.done} onChange={() => onCheck(item)}/>
       <div className='item-h5'><h5>{item.item} </h5> </div>
       <FaTimes onClick={() => onDelete(item)}/>
     </div>
