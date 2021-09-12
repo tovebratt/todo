@@ -15,9 +15,9 @@ const App = () => {
 
   useEffect(() => {
     const getItems = async () => {
-      // const itemsFromServer = 
+      const itemsFromServer = 
       await fetchItems();
-      // setItems(itemsFromServer);
+      setItems(itemsFromServer);
     };
 
     getItems();
@@ -25,11 +25,11 @@ const App = () => {
 
 
   // //fetch data
-  const fetchItems = () => {
+  const fetchItems = async () => {
     const res = fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/items");
     // const res = await fetch("http://localhost:5000/lists/items");
 
-    const data = res.json();
+    const data = await res.json();
     return data;
   };
 
