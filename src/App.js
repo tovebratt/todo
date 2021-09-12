@@ -25,11 +25,11 @@ const App = () => {
 
 
   // //fetch data
-  const fetchItems = async () => {
-    const res = await fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/items");
+  const fetchItems = () => {
+    const res = fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/items");
     // const res = await fetch("http://localhost:5000/lists/items");
 
-    const data = await res.json();
+    const data = res.json();
     return data;
   };
 
@@ -88,7 +88,7 @@ const App = () => {
       createDate: moment(date).utc(true).format("YYYY-MM-DD HH:mm:ss"),
     };
 
-    fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/additem", {
+    await fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/additem", {
       // await fetch("http://localhost:5000/lists/additem", {
 
       method: "POST",
