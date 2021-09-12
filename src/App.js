@@ -13,27 +13,27 @@ const App = () => {
   const [items, setItems] = useState([]);
   const [clickedDate, setClickedDate] = useState();
 
-  useEffect(() => {
-    const getItems = async () => {
-      const itemsFromServer = 
-      await fetchItems();
-      setItems(itemsFromServer);
-    };
+  // useEffect(() => {
+  //   const getItems = async () => {
+  //     // const itemsFromServer = 
+  //     await fetchItems();
+  //     // setItems(itemsFromServer);
+  //   };
 
-    getItems();
-  }, []);
+  //   getItems();
+  // }, []);
 
 
-  // //fetch data
+  //fetch data
   const fetchItems = async () => {
-    const res = fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/items");
+    const res = await fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/items");
     // const res = await fetch("http://localhost:5000/lists/items");
 
     const data = await res.json();
-    return data;
+    setItems(data);
   };
 
-  // useEffect(fetchItems, [])
+  useEffect(fetchItems, [])
 
 
   // show pop up on click
@@ -88,7 +88,7 @@ const App = () => {
       createDate: moment(date).utc(true).format("YYYY-MM-DD HH:mm:ss"),
     };
 
-    await fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/additem", {
+    fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/additem", {
       // await fetch("http://localhost:5000/lists/additem", {
 
       method: "POST",
@@ -98,7 +98,7 @@ const App = () => {
       body: JSON.stringify(newItem),
     });
 
-    setItems(newItem);
+    fetchItems();
   };
 
   // //count objects in calendar
