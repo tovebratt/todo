@@ -25,13 +25,13 @@ const App = () => {
 
 
   // //fetch data
-  // const fetchItems = async () => {
-  //   const res = await fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/items");
-  //   // const res = await fetch("http://localhost:5000/lists/items");
+  const fetchItems = async () => {
+    const res = await fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/items");
+    // const res = await fetch("http://localhost:5000/lists/items");
 
-  //   const data = await res.json();
-  //   setItems(data);
-  // };
+    const data = await res.json();
+    return data;
+  };
 
   // useEffect(fetchItems, [])
 
@@ -98,7 +98,7 @@ const App = () => {
       body: JSON.stringify(newItem),
     });
 
-    fetchItems();
+    setItems(newItem);
   };
 
   // //count objects in calendar
