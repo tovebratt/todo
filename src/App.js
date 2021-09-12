@@ -13,34 +13,28 @@ const App = () => {
   const [items, setItems] = useState([]);
   const [clickedDate, setClickedDate] = useState();
 
-  // useEffect(() => {
-  //   const getItems = async () => {
-  //     // const itemsFromServer = 
-  //     await fetchItems();
-  //     // setItems(itemsFromServer);
-  //   };
+  useEffect(() => {
+    const getItems = async () => {
+      // const itemsFromServer = 
+      await fetchItems();
+      // setItems(itemsFromServer);
+    };
 
-  //   getItems();
-  // }, []);
+    getItems();
+  }, []);
 
 
-  //fetch data
-  const fetchItems = async () => {
-    const res = await fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/items");
-    // const res = await fetch("http://localhost:5000/lists/items");
+  // //fetch data
+  // const fetchItems = async () => {
+  //   const res = await fetch("https://tove-bratt-todo-backend.herokuapp.com/lists/items");
+  //   // const res = await fetch("http://localhost:5000/lists/items");
 
-    const data = await res.json();
-    setItems(data);
-  };
+  //   const data = await res.json();
+  //   setItems(data);
+  // };
 
-  useEffect(fetchItems, [])
+  // useEffect(fetchItems, [])
 
-  // //fetch item
-  // const fetchItem = async (itemId) => {
-  //   const res = await fetch(`http://localhost:5000/lists/items/${itemId}`)
-  //   const data = await res.json()
-  //   return data
-  // }
 
   // show pop up on click
   const onClickDay = (e) => {
