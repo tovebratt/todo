@@ -45,6 +45,7 @@ const App = () => {
   // show pop up on click
   const onClickDay = (e) => {
     const clickedDate = e;
+    console.log(clickedDate);
 
     //showPopup
     setPopupAddItem(true);
