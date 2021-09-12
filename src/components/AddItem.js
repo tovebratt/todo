@@ -12,29 +12,27 @@ const AddItem = ({
   clickedDate,
   date,
 }) => {
-  const [item, setitem] = useState("");
+  const [itemText, setItemText] = useState("");
   const [createDate, setCreateDate] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!item) {
+    if (!itemText) {
       alert("add item");
       return;
     }
 
-    onAdd({ item });
+    onAdd( itemText );
     onDate({ createDate });
     onCloseClick();
-    setitem("");
+    setItemText("");
   };
 
   return (
     <div className="popup">
       <div className="popup-inner">
         <TodaysItems
-          key={item.itemId}
           items={items}
-          item={item}
           onDelete={onDelete}
           onCheck={onCheck}
           onDate={createDate}
@@ -51,8 +49,8 @@ const AddItem = ({
             <input
               type="text"
               placeholder="Uppgiftsbeskrivning"
-              value={item}
-              onChange={(e) => setitem(e.target.value)}
+              value={itemText}
+              onChange={(e) => setItemText(e.target.value)}
             />
             <br />
           </div>

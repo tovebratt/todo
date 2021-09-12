@@ -1,5 +1,4 @@
 import Item from "./Item";
-// import Items from './components/Items';
 
 const TodaysItems = ({
   items,
